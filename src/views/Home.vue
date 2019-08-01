@@ -1,17 +1,5 @@
 <template>
   <div class="home">
-    <h1>New Product</h1>
-    Name:
-    <input v-model="name" type="text" />
-    Description:
-    <input v-model="description" type="text" />
-    Price:
-    <input v-model="price" type="text" />
-    Supplier id:
-    <input v-model="supplierId" type="text" />
-    Image url:
-    <input v-model="imageUrl" type="text" />
-    <button v-on:click="createProduct()">Create</button>
     <h1>{{ message }}</h1>
     <div v-for="product in products">
       <h2>{{ product.name }}</h2>
@@ -52,12 +40,7 @@ export default {
     return {
       message: "Welcome to Vue.js",
       products: [],
-      currentProduct: {},
-      name: "",
-      description: "",
-      price: "",
-      supplierId: "",
-      imageUrl: ""
+      currentProduct: {}
     };
   },
   created: function() {
@@ -67,27 +50,6 @@ export default {
     });
   },
   methods: {
-    createProduct: function() {
-      var params = {
-        name: this.name,
-        description: this.description,
-        price: this.price,
-        supplier_id: this.supplierId,
-        image_url: this.imageUrl
-      };
-      axios
-        .post("/api/products", params)
-        .then(response => {
-          console.log("Success", response.data);
-          this.products.push(response.data);
-          this.name = "";
-          this.description = "";
-          this.price = "";
-          this.supplierId = "";
-          this.imageUrl = "";
-        })
-        .catch(error => console.log(error.response));
-    },
     showProduct: function(product) {
       if (this.currentProduct === product) {
         this.currentProduct = {};
