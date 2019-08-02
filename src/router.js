@@ -4,7 +4,8 @@ import Home from "./views/Home.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
 import Logout from "./views/Logout.vue";
-import ProductNew from "./views/ProductNew.vue";
+import ProductsNew from "./views/ProductsNew.vue";
+import ProductsShow from "./views/ProductsShow.vue";
 
 Vue.use(Router);
 
@@ -34,9 +35,14 @@ export default new Router({
 
     { path: "/logout", name: "logout", component: Logout },
     {
-      path: "/product/new",
-      name: "product",
-      component: ProductNew
+      path: "/products/new",
+      name: "products-new",
+      component: ProductsNew
+    },
+    {
+      path: "/products/:id",
+      name: "product-show",
+      component: ProductsShow
     }
   ]
 });

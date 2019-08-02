@@ -5,17 +5,16 @@
       |
       <router-link to="/about">About</router-link>
       |
-      <router-link to="/product/new">New Product</router-link>
+      <router-link to="/products/new">New Product</router-link>
       |
       <router-link to="/signup">Signup</router-link>
       |
       <router-link to="/login">Login</router-link>
-
       |
       <router-link to="/logout">Logout</router-link>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Products</a>
       <button
         class="navbar-toggler"
         type="button"

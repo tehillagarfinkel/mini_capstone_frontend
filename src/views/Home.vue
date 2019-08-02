@@ -4,7 +4,8 @@
     <div v-for="product in products">
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt="" />
-      <div>
+      <router-link v-bind:to="`/products/${product.id}`">More Info</router-link>
+      <!-- <div>
         <button v-on:click="showProduct(product)">More Info</button>
       </div>
       <div v-if="product === currentProduct">
@@ -21,7 +22,7 @@
         <input v-model="product.imageUrl" type="text" />
         <button v-on:click="updateProduct(product)">Update</button>
         <button v-on:click="destroyProduct(product)">Delete</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -39,8 +40,7 @@ export default {
   data: function() {
     return {
       message: "Welcome to Vue.js",
-      products: [],
-      currentProduct: {}
+      products: []
     };
   },
   created: function() {
@@ -50,13 +50,6 @@ export default {
     });
   },
   methods: {
-    showProduct: function(product) {
-      if (this.currentProduct === product) {
-        this.currentProduct = {};
-      } else {
-        this.currentProduct = product;
-      }
-    },
     updateProduct: function(product) {
       var params = {
         name: product.name,
