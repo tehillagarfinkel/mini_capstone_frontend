@@ -4,6 +4,8 @@
     <p>Description: {{ product.description }}</p>
     <p>Price: {{ product.price }}</p>
     <router-link to="/">View all products</router-link>
+
+    <router-link v-bind:to="`/products/${product.id}/edit`">Edit Recipe</router-link>
   </div>
 </template>
 
