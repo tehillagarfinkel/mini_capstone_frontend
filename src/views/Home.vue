@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <div>
+      <button v-on:click="sortAttribute = 'name'" class="btn btn-primary">Sort by Product</button>
+      <button v-on:click="sortAttribute = 'price'" class="btn btn-primary">Sort by Price</button>
+    </div>
     Search:
     <input v-model="searchFilter" type="text" list="names" />
     <datalist id="names">
       <option v-for="product in products">{{ product.name }}</option>
     </datalist>
-    <div v-for="product in filterBy(products, searchFilter, 'name', 'description')">
+    <div v-for="product in orderBy(filterBy(products, searchFilter, 'name'), sortAttribute)">
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt="" />
       <router-link v-bind:to="`/products/${product.id}`">More Info</router-link>
@@ -28,9 +31,9 @@ export default {
   mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      message: "Welcome to Vue.js",
       products: [],
-      searchFilter: ""
+      searchFilter: "",
+      sortAttribute: "name"
     };
   },
   created: function() {
